@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Здравствуй, {{user.username}}. Новые статьи в твоих любимых разделах!</h1>
+<ul>
+{%for post in posts%}
+    <li><a href="http://127.0.0.1:8000/news/{{post.pk}}/"><h3>{{post.title}}</h3></a></li>
+{%endfor%}
+</ul>
+</body>
+</html>

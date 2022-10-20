@@ -1,0 +1,24 @@
+{% extends 'flatpages/default.html'%}
+
+{% block title %}
+    Создание новости
+{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+        {% for field in form %}
+    <div class="m-1">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+    {% endfor %}
+    <input type="submit" value="Добавить новость">
+
+</form>
+{% if form.errors %}
+<div class="alert alert-danger mt-3">
+    {{ form.non_field_errors }}
+</div>
+{% endif %}
+{% endblock content %}

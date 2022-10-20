@@ -1,0 +1,30 @@
+{% extends "../flatpages/default.html" %}
+
+{% load i18n %}
+
+
+{% block content %}
+<section class="py-5">
+                <div class="container px-5">
+                    <!-- Contact form-->
+                    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+                        <div class="text-center mb-5">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-briefcase"></i></div>
+                            <h1 class="fw-bolder">Регистрация</h1>
+                        </div>
+                        <div class="row gx-5">
+                          <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+                          <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <div class="d-grid w-50 mx-auto"><button class="btn btn-primary btn-lg"  type="submit">{% trans "Sign Up" %}</button></div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+</section>
+{% endblock %}

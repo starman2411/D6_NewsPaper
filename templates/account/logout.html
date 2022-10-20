@@ -1,0 +1,31 @@
+{% extends "../flatpages/default.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<section class="py-5">
+                <div class="container px-5">
+                    <!-- Contact form-->
+                    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+                        <div class="text-center mb-5">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-box-arrow-in-left"></i></div>
+                            <h1 class="fw-bolder">Выход из аккаунта</h1>
+                        </div>
+                        <div class="row gx-5">
+
+
+                            <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+                            <form method="post" action="{% url 'account_logout' %}">
+                              {% csrf_token %}
+                              {% if redirect_field_value %}
+                              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                              {% endif %}
+                              <div class="d-grid w-50 mx-auto"><button class="btn btn-primary btn-lg"  type="submit">{% trans "Sign Out" %}</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+</section>
+
+{% endblock %}

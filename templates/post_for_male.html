@@ -1,0 +1,11 @@
+{% load custom_filters %}
+<article>
+        <header class="mb-4">
+            <h1>Здравствуй, {{user.username}}. Новая статья в твоём любимом разделе!</h1>
+            <h2 class="fw-bolder mb-1">{{post.title|censor}}</h2>
+        </header>
+        <section class="mb-5">
+            <p class="fs-5 mb-4">{{post.text|censor|truncatechars:50}}</p>
+        </section>
+</article>
+
